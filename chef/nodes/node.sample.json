@@ -1,0 +1,35 @@
+{
+  "run_list": [
+    "recipe[adduser]",
+    "recipe[httpd]",
+    "recipe[php]",
+    "recipe[mysql]"
+  ],
+  "automatic": {
+    "ipaddress": "192.168.33.5"
+  },
+  "domain": "cinra.dev",
+  "charset": "UTF-8",
+  "timezone": "Asia/Tokyo",
+  "user": {
+    "name": "cinra",
+    "password": "$1$YNdSNIME$WtiakACxxXT.hNkeCVcRS.",
+    "group": "www",
+    "home": "/var/www"
+  },
+  "httpd": {
+    "document_root": "/var/www/html",
+    "error_log": "/var/log/httpd/error_log",
+    "access_log": "/var/log/httpd/access_log combined"
+  },
+  "php": {
+    "post_max_size": "32M",
+    "upload_max_filesize": "32M"
+  },
+  "mysql": {
+    "user": "cinra",
+    "password": "test",
+    "dbname": "test",
+    "root_password": "test"
+  }
+}

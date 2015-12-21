@@ -1,0 +1,15 @@
+# Include vhosts.d/*.conf
+
+<VirtualHost *:80>
+  ServerName  <%= node['domain']%>
+  DocumentRoot "<%= node['httpd']['document_root']%>"
+  ErrorLog  <%= node['httpd']['error_log']%>
+  CustomLog <%= node['httpd']['access_log']%>
+  <Directory "<%= node['httpd']['document_root']%>">
+    AllowOverride All
+    Options MultiViews -Indexes FollowSymLinks IncludesNoExec ExecCGI
+    Order Deny,Allow
+    Header set Access-Control-Allow-Origin *
+    EnableSendfile off
+   </Directory>
+</VirtualHost>
